@@ -1,22 +1,41 @@
 from models import Dog
 
 def create_table(base):
-    pass
+   busy =Dog(
+       name = "busy",
+       breed = 'american'
 
-def save(session, dog):
-    pass
+   )
+     
+  
+
+def save(session,busy):
+    session.add(busy)
+    session.commit()
+
+  
 
 def get_all(session):
-    pass
+   dog_name=session.query(Dog.name).all()
+   print(dog_name)
 
 def find_by_name(session, name):
-    pass
+    query = session.querry(Dog).filter(name.like('%busy%'),)
+    
 
 def find_by_id(session, id):
-    pass
+        query = session.querry(Dog).filter(id)
+
+   
 
 def find_by_name_and_breed(session, name, breed):
-    pass
+        query = session.querry(Dog).filter(name.like('%busy%'),breed)
+
+    
 
 def update_breed(session, dog, breed):
+    session.query(Dog).update({
+         dog: breed+1
+    })
+
     pass
